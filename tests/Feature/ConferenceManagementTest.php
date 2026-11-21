@@ -53,6 +53,35 @@ class ConferenceManagementTest extends TestCase
         $this->assertDatabaseCount('conferences', 0);
     }
 
+    public function test_guest_sees_no_management_actions_in_conference_list(): void
+    {
+        Conference::create($this->conferenceData());
+
+        $this->get(route('conferences.index'))
+            ->assertOk()
+            ->assertDontSee(__('messages.new_conference'))
+            ->assertDontSee(__('messages.edit'))
+            ->assertDontSee(__('messages.delete'));
+    }
+
+    public function test_invalid_update_keeps_existing_conference_data(): void
+    {
+        $conference = Conference::create($this->conferenceData());
+        $this->actingAs(User::factory()->create());
+
+        $invalid = array_merge($this->conferenceData(), ['title' => '', 'capacity' => 0]);
+        $this->from(route('conferences.edit', $conference))
+            ->put(route('conferences.update', $conference), $invalid)
+            ->assertRedirect(route('conferences.edit', $conference))
+            ->assertSessionHasErrors(['title', 'capacity']);
+
+        $this->assertDatabaseHas('conferences', [
+            'id' => $conference->id,
+            'title' => 'Example conference',
+            'capacity' => 80,
+        ]);
+    }
+
     public function test_required_fields_are_validated_on_server(): void
     {
         $this->actingAs(User::factory()->create());
