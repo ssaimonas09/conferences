@@ -1,0 +1,5 @@
+@extends('layouts.app')
+@section('title', __('messages.login'))
+@section('content')
+<section class="container login-page"><div class="login-panel"><div class="login-icon">C</div><h1>{{ __('messages.login_title') }}</h1><p class="text-secondary">{{ __('messages.login_intro') }}</p><form method="POST" action="{{ route('login.attempt') }}">@csrf<div class="mb-3"><label class="form-label" for="email">{{ __('messages.email') }}</label><input class="form-control @error('email') is-invalid @enderror" id="email" name="email" type="email" autocomplete="email" value="{{ old('email') }}" required>@error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror</div><div class="mb-4"><label class="form-label" for="password">{{ __('messages.password') }}</label><input class="form-control @error('password') is-invalid @enderror" id="password" name="password" type="password" autocomplete="current-password" required>@error('password')<div class="invalid-feedback">{{ $message }}</div>@enderror</div><button class="btn btn-primary w-100" type="submit">{{ __('messages.login') }}</button></form></div></section>
+@endsection

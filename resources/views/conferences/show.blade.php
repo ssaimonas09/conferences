@@ -1,0 +1,5 @@
+@extends('layouts.app')
+@section('title', $conference->title)
+@section('content')
+<section class="container detail-page"><a class="back-link" href="{{ route('conferences.index') }}">← {{ __('messages.back') }}</a><article class="detail-panel"><div class="d-flex flex-wrap gap-2 mb-3"><span class="date-chip">{{ $conference->date->format('d.m.Y') }}</span><span class="city-chip">{{ $conference->city }}</span></div><h1>{{ $conference->title }}</h1><p class="detail-description">{{ $conference->description }}</p><dl class="detail-grid"><div><dt>{{ __('messages.date') }}</dt><dd>{{ $conference->date->format('d.m.Y') }}</dd></div><div><dt>{{ __('messages.address') }}</dt><dd>{{ $conference->address }}, {{ $conference->city }}</dd></div><div><dt>{{ __('messages.capacity') }}</dt><dd>{{ __('messages.seats', ['count' => $conference->capacity]) }}</dd></div></dl>@auth<a class="btn btn-primary mt-4" href="{{ route('conferences.edit', $conference) }}">{{ __('messages.edit') }}</a>@endauth</article></section>
+@endsection
