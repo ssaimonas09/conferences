@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Conference;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class ConferenceManagementTest extends TestCase
@@ -111,5 +112,16 @@ class ConferenceManagementTest extends TestCase
 
         $this->post(route('logout'))->assertRedirect(route('conferences.index'));
         $this->assertGuest();
+    }
+
+    public function test_seeders_create_example_conferences_and_configured_administrator(): void
+    {
+        Config::set('conference.admin_email', 'admin@example.test');
+        Config::set('conference.admin_password', 'test-password');
+
+        $this->seed();
+
+        $this->assertDatabaseCount('conferences', 3);
+        $this->assertDatabaseHas('users', ['email' => 'admin@example.test']);
     }
 }

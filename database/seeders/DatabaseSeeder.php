@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         if (config('conference.admin_email') && config('conference.admin_password')) {
             User::updateOrCreate(
                 ['email' => config('conference.admin_email')],
-                ['name' => 'Administrator', 'password' => config('conference.admin_password')],
+                ['name' => __('messages.administrator'), 'password' => config('conference.admin_password')],
             );
         }
     }

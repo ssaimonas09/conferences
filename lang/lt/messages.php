@@ -2,6 +2,7 @@
 
 return [
     'site_name' => 'Konferencijos',
+    'administrator' => 'Administratorius',
     'nav_home' => 'Konferencijos',
     'login' => 'Prisijungti',
     'logout' => 'Atsijungti',
