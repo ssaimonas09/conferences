@@ -57,9 +57,14 @@ class ConferenceManagementTest extends TestCase
     {
         $this->actingAs(User::factory()->create());
 
-        $this->post(route('conferences.store'), [])->assertSessionHasErrors([
-            'title', 'description', 'date', 'address', 'city', 'capacity',
-        ]);
+        $this->from(route('conferences.create'))->post(route('conferences.store'), [])
+            ->assertRedirect(route('conferences.create'))
+            ->assertSessionHasErrors([
+                'title', 'description', 'date', 'address', 'city', 'capacity',
+            ]);
+        $this->get(route('conferences.create'))
+            ->assertOk()
+            ->assertSee('Laukas „antraštė“ yra privalomas.');
         $this->assertDatabaseCount('conferences', 0);
     }
 
