@@ -1,0 +1,49 @@
+@import "bootstrap/scss/bootstrap";
+
+:root { --ink: #17232f; --accent: #215d75; --line: #dbe3e5; }
+body { background: #f7f8f7; color: var(--ink); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+a { text-decoration: none; }
+.site-header { background: #fff; border-bottom: 1px solid var(--line); }
+.navbar { min-height: 76px; }
+.navbar-brand { color: var(--ink); letter-spacing: -.04em; }
+.brand-mark, .login-icon { display: inline-grid; place-items: center; background: var(--accent); color: white; font-weight: 800; }
+.brand-mark { width: 34px; height: 34px; border-radius: 11px; margin-right: .3rem; }
+.nav-link { color: #42515d; font-size: .94rem; }
+.btn-primary { --bs-btn-bg: #215d75; --bs-btn-border-color: #215d75; --bs-btn-hover-bg: #17465a; --bs-btn-hover-border-color: #17465a; }
+.btn-outline-primary { --bs-btn-color: #215d75; --bs-btn-border-color: #215d75; --bs-btn-hover-bg: #215d75; --bs-btn-hover-border-color: #215d75; }
+.hero { background: linear-gradient(120deg, #123b4d 0%, #215d75 58%, #4d838d 100%); color: #fff; }
+.hero-inner { padding: 76px 0 84px; }
+.eyebrow { text-transform: uppercase; letter-spacing: .17em; font-size: .74rem; font-weight: 700; opacity: .85; }
+.hero h1 { max-width: 700px; font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 1.08; font-weight: 760; letter-spacing: -.04em; }
+.hero-text { max-width: 560px; font-size: 1.12rem; opacity: .88; margin: 1.2rem 0 0; }
+.section-space { padding-top: 55px; padding-bottom: 70px; }
+.section-title { font-size: 1.75rem; font-weight: 700; letter-spacing: -.03em; }
+.conference-card, .detail-panel, .form-panel, .login-panel { background: #fff; border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(20, 45, 56, .04); }
+.conference-card { border-radius: 16px; padding: 26px; display: flex; flex-direction: column; }
+.card-top { display: flex; justify-content: space-between; align-items: center; gap: .5rem; margin-bottom: 24px; }
+.date-chip { display: inline-block; background: #e5f1f2; color: #1b5b6b; border-radius: 7px; padding: .4rem .65rem; font-size: .82rem; font-weight: 700; }
+.city-chip { color: #5e6a72; font-size: .86rem; }
+.conference-card h3 { font-size: 1.26rem; line-height: 1.3; font-weight: 700; margin-bottom: 12px; }
+.conference-card h3 a { color: var(--ink); }
+.conference-card h3 a:hover { color: var(--accent); }
+.card-description { color: #56636b; line-height: 1.55; margin-bottom: 20px; }
+.card-meta { color: #6f7b81; font-size: .82rem; }
+.card-actions { border-top: 1px solid #edf0f0; margin-top: 22px; padding-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+.empty-state { text-align: center; padding: 80px 20px; background: #fff; border: 1px solid var(--line); border-radius: 16px; color: #66747a; }
+.empty-state h3 { color: var(--ink); }
+.form-page, .detail-page { max-width: 860px; padding-top: 45px; padding-bottom: 75px; }
+.back-link { display: inline-block; color: var(--accent); margin-bottom: 22px; font-weight: 600; }
+.form-panel, .detail-panel { border-radius: 18px; padding: clamp(25px, 4vw, 46px); }
+.form-panel h1, .detail-panel h1, .login-panel h1 { font-weight: 750; letter-spacing: -.035em; }
+.form-label { font-weight: 600; font-size: .9rem; }
+.form-control { padding: .7rem .85rem; }
+.detail-panel h1 { font-size: clamp(2rem, 4vw, 3.2rem); }
+.detail-description { color: #4b5b64; line-height: 1.7; white-space: pre-wrap; margin: 26px 0; }
+.detail-grid { border-top: 1px solid var(--line); padding-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; }
+.detail-grid dt { color: #77838a; font-size: .82rem; margin-bottom: 6px; }
+.detail-grid dd { font-weight: 600; }
+.login-page { min-height: calc(100vh - 76px); display: grid; place-items: center; padding-top: 45px; padding-bottom: 75px; }
+.login-panel { border-radius: 18px; width: 100%; max-width: 440px; padding: 40px; }
+.login-icon { width: 52px; height: 52px; border-radius: 15px; margin-bottom: 24px; font-size: 1.5rem; }
+.login-panel h1 { font-size: 1.8rem; }
+@media (max-width: 575px) { .navbar { min-height: 66px; } .nav-link { display: none; } .hero-inner { padding: 60px 0 65px; } .login-panel { padding: 28px; } }
